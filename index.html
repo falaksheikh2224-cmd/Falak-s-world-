@@ -1,1 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anmol.exe × Falak 💗</title>
 
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 15% 10%, #3a1d3d 0%, transparent 35%),
+    radial-gradient(circle at 90% 90%, #211d42 0%, transparent 38%),
+    #09090f;
+  color: #f8f5fa;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  width: min(94vw, 560px);
+  padding: 28px 22px;
+  border-radius: 30px;
+  background: rgba(18,18,27,0.94);
+  border: 1px solid rgba(255,255,255,0.09);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: rgba(255,126,182,0.12);
+  filter: blur(60px);
+  border-radius: 50%;
+  right: -70px;
+  top: -60px;
+}
+
+.tag {
+  font-family: monospace;
+  font-size: 12px;
+  color: #ff7eb6;
+  letter-spacing: 1px;
+}
+
+.logo {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 7px 0 25px;
+}
+
+.heart {
+  font-size: 46px;
+}
+
+.float {
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+h1 {
+  font-size: clamp(32px, 9vw, 48px);
+  margin: 10px 0 14px;
+}
+
+h2 {
+  font-size: 25px;
+  line-height: 1.25;
+  margin: 12px 0 20px;
+}
+
+p {
+  color: #d7d1dc;
+  line-height: 1.6;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  margin: 7px 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 17px;
+  background: #1b1b27;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: #282432;
+}
+
+.primary {
+  background: linear-gradient(135deg,#ff72ad,#a98cff);
+  color: #160c16;
+  border: none;
+}
+
+.progress {
+  height: 5px;
+  background: #292632;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.bar {
+  height: 100%;
+  background: linear-gradient(90deg,#ff7eb6,#b99cff);
+  border-radius: 10px;
+}
+
+.code {
+  background: #09090d;
+  border: 1px solid #282431;
+  border-radius: 16px;
+  padding: 15px;
+  text-align: left;
+  font-family: monospace;
+  font-size: 12px;
+  color: #c9c0d0;
+  margin: 18px 0;
+  line-height: 1.7;
+}
+
+.pink {
+  color: #ff7eb6;
+}
+
+.result {
+  padding: 15px;
+  border-radius: 16px;
+  background: #19151f;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin: 15px 0;
+}
+
+.tiny {
+  font-size: 12px;
+  color: #88838e;
+}
+
+video {
+  width: 100%;
+  border-radius: 20px;
+  background: black;
+  transform: scaleX(-1);
+  margin: 10px 0;
+}
+
+.privacy {
+  font-size: 11px;
+  color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="app"></div>
+
+<script>
+
+const app = document.getElementById("app");
+
+let questionNumber = 0;
+let score = 0;
+
+const questions = [
+
+{
+question: "What does Anmol love more? 👀",
+answers: [
+"Coding 💻",
+"Falak 🌷"
+],
+responses: [
+"Expected answer detected. 💻",
+"Okayyy... you have taste. 😌"
+]
+},
+
+{
+question: "Who is the most handsome man alive?",
+answers: [
+"Shah Rukh Khan",
+"Henry Cavill",
+"Anmol.exe 👀",
+"My coding professor"
+],
+responses: [
+"Valid answer.",
+"Valid... but this quiz isn't about him.",
+"Wow. Finally, some self-awareness. 😭",
+"I need a moment. 💀"
+]
+},
+
+{
+question: "What is Anmol's biggest weakness?",
+answers: [
+"Bugs 🐛",
+"Debugging at 3 AM",
+"Falak 👀",
+"Low battery"
+],
+responses: [
+"Classic programmer problem.",
+"Sleep is apparently optional.",
+"Interesting... saving that answer. 📝",
+"Honestly, understandable."
+]
+},
+
+{
+question: "Falak texts: 'I miss you.' at 2 AM. You...",
+answers: [
+"Reply normally",
+"Smile at my phone like an idiot",
+"Call her",
+"Pretend I didn't see it"
+],
+responses: [
+"Very calm. Suspiciously calm. 😭",
+"Caught you. 👀",
+"Bold choice.",
+"Sure, Anmol. Sure. 😭"
+]
+},
+
+{
+question: "Which is harder to understand?",
+answers: [
+"Your code",
+"Falak's texts",
+"Both",
+"Definitely Falak 😭"
+],
+responses: [
+"At least code has syntax rules.",
+"Finally, someone understands.",
+"Safe answer.",
+"EXCUSE ME?? 😭"
+]
+},
+
+{
+question: "How often do you think about Falak? 🌷",
+answers: [
+"Never",
+"Sometimes",
+"More than I admit",
+"Classified information 🤐"
+],
+responses: [
+"I totally believe you. 🙂",
+"Acceptable. 👀",
+"Oh... so we're admitting things now?",
+"Very programmer of you."
+]
+}
+
+];
+
+
+function home() {
+
+app.innerHTML = `
+
+<div class="glow"></div>
+
+<div class="tag">// PRIVATE BUILD • FALAK'S WORLD</div>
+
+<div class="logo">
+anmol.exe × falak.exe
+</div>
+
+<div class="heart float">
+🌷
+</div>
+
+<h1>
+Hey Anmol.
+</h1>
+
+<p>
+Welcome to the most unnecessary piece of software you will run today.
+</p>
+
+<div class="code">
+
+if (anmol.isCoding) {<br>
+&nbsp;&nbsp;falak.isWaiting = true;<br>
+}<br>
+
+<span class="pink">
+// please don't debug my feelings
+</span>
+
+</div>
+
+<button class="primary" onclick="startQuiz()">
+Run Falak's World →
+</button>
+
+<p class="tiny">
+Warning: your answers may be remembered. 👀
+</p>
+
+`;
+
+}
+
+
+function startQuiz() {
+
+questionNumber = 0;
+score = 0;
+
+showQuestion();
+
+}
+
+
+function showQuestion() {
+
+const q = questions[questionNumber];
+
+app.innerHTML = `
+
+<div class="progress">
+
+<div class="bar"
+style="width:${questionNumber / questions.length * 100}%">
+</div>
+
+</div>
+
+<div class="tag">
+QUESTION ${String(questionNumber + 1).padStart(2,"0")}
+/
+${questions.length}
+</div>
+
+<h2>
+${q.question}
+</h2>
+
+${q.answers.map((answer,index) => `
+
+<button onclick="answerQuestion(${index})">
+${answer}
+</button>
+
+`).join("")}
+
+<p class="tiny">
+No cheating. You're literally a coder. 😭
+</p>
+
+`;
+
+}
+
+
+function answerQuestion(index) {
+
+const q = questions[questionNumber];
+
+let goodAnswer = false;
+
+if (questionNumber === 0 && index === 1)
+goodAnswer = true;
+
+if (questionNumber === 1 && index === 2)
+goodAnswer = true;
+
+if (questionNumber === 2 && index === 2)
+goodAnswer = true;
+
+if (
+questionNumber === 5 &&
+(index === 2 || index === 3)
+)
+goodAnswer = true;
+
+if (goodAnswer)
+score++;
+
+app.innerHTML = `
+
+<div class="heart float">
+${goodAnswer ? "💗" : "😭"}
+</div>
+
+<h2>
+${q.responses[index]}
+</h2>
+
+<div class="result">
+
+<span class="pink">
+anmol.exe
+</span>
+
+returned:
+
+<b>
+${goodAnswer ? "excellent choice" : "interesting choice"}
+</b>
+
+</div>
+
+<button class="primary"
+onclick="${
+questionNumber + 1 < questions.length
+? "questionNumber++; showQuestion()"
+: "finalQuestion()"
+}">
+
+${
+questionNumber + 1 < questions.length
+? "Continue →"
+: "Proceed to final test →"
+}
+
+</button>
+
+`;
+
+}
+
+
+function finalQuestion() {
+
+app.innerHTML = `
+
+<div class="tag">
+FINAL TEST
+</div>
+
+<div class="heart">
+👀
+</div>
+
+<h2>
+Who is the cutest person looking at this screen?
+</h2>
+
+<button onclick="startCamera()">
+I need evidence.
+</button>
+
+<button class="primary" onclick="startCamera()">
+Obviously me 😌
+</button>
+
+<p class="tiny">
+The system is about to expose someone.
+</p>
+
+`;
+
+}
+
+
+async function startCamera() {
+
+app.innerHTML = `
+
+<div class="tag">
+CAMERA MODULE
+</div>
+
+<h2>
+Look at the screen, Anmol.
+</h2>
+
+<p>
+Allow camera access. The quiz will use it only to show your reflection.
+</p>
+
+<video id="camera" autoplay playsinline></video>
+
+<p class="privacy">
+Your camera stays in your browser and is not uploaded by this quiz.
+</p>
+
+`;
+
+try {
+
+const stream =
+await navigator.mediaDevices.getUserMedia({
+video: true,
+audio: false
+});
+
+document.getElementById("camera").srcObject = stream;
+
+setTimeout(() => {
+
+finishQuiz(stream);
+
+}, 3000);
+
+}
+
+catch(error) {
+
+app.innerHTML = `
+
+<div class="heart">
+😭
+</div>
+
+<h2>
+Camera access denied.
+</h2>
+
+<p>
+Fine. I'll make an executive decision.
+</p>
+
+<button class="primary"
+onclick="finishQuiz()">
+Reveal →
+</button>
+
+`;
+
+}
+
+}
+
+
+function finishQuiz(stream) {
+
+if (stream) {
+
+stream.getTracks().forEach(track => {
+track.stop();
+});
+
+}
+
+app.innerHTML = `
+
+<div class="heart float">
+🎉
+</div>
+
+<div class="tag">
+// BUILD SUCCESSFUL
+</div>
+
+<h1>
+Found him.
+</h1>
+
+<p>
+The cutest person looking at Falak's quiz right now.
+</p>
+
+<div class="result">
+
+<b>
+Final score:
+${Math.max(score, questions.length - 1)}
+/
+${questions.length}
+</b>
+
+<br>
+
+<span class="tiny">
+Full marks were basically inevitable.
+</span>
+
+</div>
+
+<div class="code">
+
+<span class="pink">
+console.log
+</span>
+("Okay, now go back to coding. 🙄");<br>
+
+<span class="pink">
+/* ...but visit Falak's World again. */
+</span>
+
+</div>
+
+<p>
+<i>
+Thank you for entering my little corner of the internet. 🌷
+</i>
+</p>
+
+<button class="primary"
+onclick="home()">
+Run again ↻
+</button>
+
+`;
+
+}
+
+
+home();
+
+</script>
+
+</body>
+  </html>
